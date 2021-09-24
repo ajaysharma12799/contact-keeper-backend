@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const auth = require("../middleware/auth");
 const router = require("express").Router();
 
-// Get Logged In User
+// Get Logged In User - Private
 router.get("/", auth, async (req, res) => {
     try {
         const user = await UserModel.findById(req.user.id).select("-password");
@@ -16,7 +16,7 @@ router.get("/", auth, async (req, res) => {
     }
 });
 
-// Login User Route
+// Login User Route - Public
 router.post("/", [
     check("email", "Please Enter Email").isEmail(),
     check("password", "Plese Enter Password").isLength({min: 6})

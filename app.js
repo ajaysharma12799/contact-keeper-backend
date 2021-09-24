@@ -16,7 +16,7 @@ app.use(express.urlencoded({extended: false}));
 
 app.use("/api/users", require("./routes/user.route"));
 app.use("/api/auth", require("./routes/auth.route"));
-// app.use("/api/contacts", require("./routes/contact.route"));
+app.use("/api/contacts", require("./routes/contact.route"));
 
 app.get("/", (req, res) => {
     res.json({message: "Working Fine"});

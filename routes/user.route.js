@@ -5,7 +5,7 @@ const {check, validationResult} = require("express-validator");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 
-// Register User Route
+// Register User Route - Public
 router.post("/", [
     check("name", "Please Enter Name").not().isEmpty(),
     check("email", "Please Enter Email").isEmail(),
