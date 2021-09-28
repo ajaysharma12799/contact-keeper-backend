@@ -77,7 +77,7 @@ router.put("/:id", auth, async (req, res) => {
 // Delete Contact - Private
 router.delete("/:id", auth, async (req, res) => {
     try {
-        const contact = await Contact.findById(req.params.id);
+        let contact = await ContactModel.findById(req.params.id);
 		if (!contact) {
             return res.status(404).json({ msg: 'Contact Not Found' });
         }
@@ -86,7 +86,7 @@ router.delete("/:id", auth, async (req, res) => {
             return res.status(401).json({ msg: 'Not Authorized' });
         }
 
-		await Contact.findByIdAndRemove(req.params.id);
+		await ContactModel.findByIdAndRemove(req.params.id);
 		res.json({ msg: 'Contact Removed' });
     } catch (error) {
         console.error(error.message);
